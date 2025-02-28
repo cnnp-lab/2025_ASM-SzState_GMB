@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2566">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 18.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    li.li4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {text-decoration: underline ; font-kerning: none}
+    span.s3 {-webkit-text-stroke: 0px #000000}
+    ol.ol1 {list-style-type: decimal}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">SEIZURE DURATION AND FREQUENCY …</span></p>
+<p class="p2"><span class="s1">Code and data for figure generation and statistical analysis</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1">The code provided on this repository generates results and supplementary figures for — publication, as well as the corresponding statistical analysis.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p5"><span class="s2"><b># CODE</b><b></b></span></p>
+<p class="p4"><span class="s1">The provided code, gmb_SNS_ASM_Dur_V7.py, has been developed with Spyder v6 running on python 3.12.5</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1"><i>- Structure</i><i></i></span></p>
+<p class="p4"><span class="s1">This code is structured for modular execution, allowing the generation of each figure independently by running specific sections. NOTE: the way section are assigned might not be interpreted the same on other platforms.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1">The code can be executed all at once to generate and store all figures in both svg and pdf format.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1">In case of being interested on a specific figure, please follow this steps.<span class="Apple-converted-space"> </span></span></p>
+<ol class="ol1">
+  <li class="li4"><span class="s3"></span><span class="s1">Execute the section titled “Initialise Workspace”, to generate and load all required data.<span class="Apple-converted-space"> </span></span></li>
+  <li class="li4"><span class="s3"></span><span class="s1">Execute the section corresponding to the figure of interest, regardless of order on the file.<span class="Apple-converted-space"> </span></span></li>
+</ol>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1"><i>- Configuration</i><i></i></span></p>
+<p class="p4"><span class="s1">The data used to generate the results has to be placed on a subfolder named “data” in the same folder as the main code is stored.</span></p>
+<p class="p4"><span class="s1">The variable ‘<i>sz_Clust’<span class="Apple-converted-space">  </span></i>is the main source of information for the presented results and supplementary analysis. It is loaded from the following css file: ‘/data/rednmf_l10.csv’. Check line 36 to modify the origin of the data.</span></p>
+<p class="p4"><span class="s1">The variable ‘<i>Stt_Freq_asm’ </i>contains the seizure frequency information. It loaded from the following css file: ‘/data/rednmf_l10.csv’. Check line 37 to modify the origin of the data.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p7"><span class="s1">The code is configured to automatically generate figures and store them as both .svg and .pdf figures.<span class="Apple-converted-space"> </span></span></p>
+<p class="p7"><span class="s1">To disable figure storage, change ‘save_fig’ variable (line 40) to <i>“False”</i><i></i></span></p>
+<p class="p4"><span class="s1">‘path_save_fig’ variable identifies the root file to store figures when ‘save_fig’ has been set to <i>“True”</i>.<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1">The selected interpreter, ‘cairo’, does not show figures on Sypder interface. To use standard figure interpreter, please comment lines 25 to 30.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p5"><span class="s2"><b>#DATA</b><b></b></span></p>
+<p class="p4"><span class="s1">Two files are provided as the main data source for figure generation. All the provided data has been extracted considering ROI segmentation on Lausanne scale 60, and band power on base 10 logarithmic scale. For different configuration, please contact the authors.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1"><i>- rednmf_l10_szFrq.csv</i><i></i></span></p>
+<p class="p4"><span class="s1">This file contain seizure frequency for all individual included on the full dataset (28 individuals). Seizure frequency has been calculated on the two ASM periods defined on this study: Normal-dose and Under-dose.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1"><i>- rednmf_l10.csv</i><i></i></span></p>
+<p class="p4"><span class="s1">This file contains the main data for figure generation and statistical analysis. Each row corresponds to a seizure and each column to a variable. The included variables relate to: Patient identification, seizure states, asm-related seizure states reassignment, duration (full, under-dose state duration and common sates), number of states (full, under-dose and common), seizure classification, ASM levels and state, time of day (including circular 24h and 12h varialbles), type of ASM in use for tapering.<span class="Apple-converted-space"> </span></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1">As explained on the publication, the initial complete dataset, composed of 28 patients and +300 seizures, is reduced as more restrictive analysis is applied (from 28 patients to 17 and finally 7). As a result several variables present empty, nan and ±inf values. This data has been taken into account an removed before any figure generation or statistical analysis.</span></p>
+</body>
+</html>
