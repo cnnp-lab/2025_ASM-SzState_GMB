@@ -520,12 +520,12 @@ pop_hist_seq = pd.DataFrame({"Seq":             ["n.p.", "1st", "2nd"],
 
 # Barplots for Sequence distribution on each  ASM periods
 sns.barplot(x='Under-dose Stt.', y='Seq', data=pop_hist_seq, order=["2nd", "1st", "n.p."], 
-            orient='h', color="#EB6F3E", lw=0, label = 'Under-dose Stt.')
+            orient='h', color="#EB6F3E", lw=0)#, label = 'Under-dose Stt.')
 
 sns.barplot(x='Common Stt.', y='Seq', data=pop_hist_seq, order=["2nd", "1st", "n.p."], 
-            orient='h', color="#531E77", lw=0, label = 'Common Stt.')
+            orient='h', color="#531E77", lw=0)#, label = 'Common Stt.')
 
-plt.legend()
+#plt.legend()
 plt.ylabel("sequence(index)")
 plt.xlabel("counts(szs.)")
 
@@ -538,7 +538,7 @@ plt.ylim([yl[-1],yl[0]])
 x_ticks = np.linspace(xl[0], xl[-1],int((xl[-1]-xl[0])/5+1))
 plt.xticks(x_ticks,np.abs(x_ticks.astype(int)).astype(str))
 
-plt.title("Seizure Stt. First Aperance")
+plt.title("Seizure States First Appearance")
 
 # Part 2: Relative duration of Under-dose Staes -------------------------------
 plt.subplot(1,2,2)
@@ -555,7 +555,7 @@ plt.ylabel("Duration (%)")
 
 # Median of the proporstion
 plt.xlabel("median proportion = " +str(round(Data[idx].median(),3))+ "%")
-plt.title("Under-dose states relative duration" )
+plt.title("Tapered-emergent states relative duration" )
 
 if save_fig:
     plt.savefig(path_save_fig + "/SUP_UND_Seq_DurCont.svg", format='svg', 
@@ -590,12 +590,11 @@ pop_hist_nss = pd.DataFrame({"N. of States": nss,
 
 # Barplots for Number of States distribution on each  ASM periods
 sns.barplot(x='Under-dose N. Stt.', y='N. of States', data=pop_hist_nss,
-            orient='h', color="#1B86AA", lw=0, label = 'Under-dose N. Stt.')
+            orient='h', color="#1B86AA", lw=0)#, label = 'Under-dose N. Stt.')
 
 sns.barplot(x='Normal-dose N. Stt.', y='N. of States', data=pop_hist_nss,
-            orient='h', color="#483B73", lw=0, label = 'Normal-dose N. Stt.')
+            orient='h', color="#483B73", lw=0)#, label = 'Normal-dose N. Stt.')
 
-plt.legend()
 plt.ylabel("N. of States")
 plt.xlabel("counts(szs.)")
 
@@ -609,7 +608,7 @@ plt.ylim([yl[0],yl[-1]])
 x_ticks = np.linspace(-40, 40,9)
 plt.xticks(x_ticks,np.abs(x_ticks.astype(int)).astype(str))
 
-plt.title("N. of States in CMN seizures(" +
+plt.title("N. of States in seizures(" +
           str(Data.shape[0])+ " Szs. | "+
           str(len(np.unique(Data.patient_id)))+ " Pts.)")
 
@@ -657,15 +656,15 @@ for Show_id in I:
 X = np.hstack([np.repeat(I[i], len(Full_Seg_L_CrCf[i])) for i in range(0,len(I))])
 Y = np.hstack(Full_Seg_L_CrCf)
 H = np.hstack(Full_Seg_L_CrpV)
-sns.scatterplot(x = X.astype(str), y = Y, hue = H, 
+asdf = sns.scatterplot(x = X.astype(str), y = Y, hue = H, 
                 hue_norm = (0,4), palette="viridis_r")
 
 plt.axhline(0,0,1,color='k', linestyle=":")
 
-plt.title("Full Duration vs Common Sates Duration")
+plt.title("Full Duration vs Sates Duration")
 plt.ylabel("Spearman's Correlation Coefficient")
 
-plt.legend(title='p-value', loc='lower left', labels=['','n.s.', '<0.05','<0.01','<0.001'])
+plt.legend(asdf,title='p-value', loc='lower left', labels=['','n.s.', '<0.05','<0.01','<0.001'])
 
 x_ticks = ["id"+str(i) for i in I]
 plt.xticks(np.linspace(0,len(I)-1,len(I)),x_ticks,rotation=30)
@@ -779,11 +778,11 @@ stData[rsp] = FL
 plt.figure(figsize=[5,5])
 
 sns.scatterplot(data = stData, x="ASM_lvl", y=rsp, 
-                hue = Cater, palette = palt, hue_order = Hue_Patt)
+                hue = Cater, palette = palt, hue_order = Hue_Patt, legend = False)
 X = np.linspace(X_Lim_asm[0], X_Lim_asm[1])
 Y = int_eff
 Y += X * asm_eff * (asm_pvl < 0.05)
-sns.lineplot(x=X, y=Y, color = "red", label = "ASM lvl. - Fixed eff.")
+sns.lineplot(x=X, y=Y, color = "red", legend = False)#, label = "ASM lvl. - Fixed eff.")
 plt.fill_between(range(X_Lim_asm[0],X_Lim_asm[1]+1), Y_Lim2[0], Y_Lim2[1], 
                  np.array(range(X_Lim_asm[0],X_Lim_asm[1]+1))>=-1, 
                  alpha=0.1, color='k')
